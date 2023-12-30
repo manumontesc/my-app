@@ -1,23 +1,21 @@
-body{
+body {
   font-family: 'Arial', sans-serif;
-  background-color: #f0f0f0;  
+  background-color: #f0f0f0;
 }
+
 .app-title {
   font-size: 36px;
   margin: 20px 0 10px;
   text-align: center;
-  align-self: flex-start;
 }
 
 #search-container {
-  margin: 10em;
+  margin: 5em;
   text-align: center;
-  align-self: center; 
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  grid-gap: 10px; 
-  padding: -5em;
-  
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  padding: 1em; /* o ajusta según sea necesario */
 }
 
 #search-container input {
@@ -27,12 +25,10 @@ body{
 }
 
 button {
-  grid-column: span 2; 
-  align-self: center; 
-  margin-top: 10px;
-  margin-inline: 35em;
-  padding: 8px; 
-  font-size: 16px; 
+  grid-column: span 2;
+  margin: 10px auto; /* centrar vertical y horizontalmente */
+  padding: 8px;
+  font-size: 16px;
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -41,15 +37,12 @@ button {
   transition: background-color 0.3s ease;
 }
 
-
 button:hover {
   background-color: #0056b3;
 }
 
 .result {
-  grid-column: span 2; 
+  grid-column: span 2;
   margin-top: 20px;
   text-align: left;
-  align-self: center;
 }
-
