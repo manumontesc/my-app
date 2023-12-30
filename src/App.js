@@ -98,24 +98,29 @@ const App = () => {
 
   const renderStages = () => {
     if (stages === null) {
-      return(`No existe una ruta de ${results[0].name} a ${results[1].name}`);
-    } else if (stages) {
-        return stages.map((journey, index) => {
-          let journeyInfo = '';
-          if (journey instanceof AirplaneJourney) {
-            journeyInfo = `Coge el avión ${journey.state.flightNumber} con asiento ${journey.state.seatNumber} desde ${journey.state.origin.name} hasta ${journey.state.destination.name}.`;
-          } else if (journey instanceof CarJourney) {
-            journeyInfo = `Coge el coche desde ${journey.state.origin.name} hasta ${journey.state.destination.name} con la matrícula ${journey.state.licensePlate}.`;
-          } else if (journey instanceof TrainJourney) {
-            journeyInfo = `Coge el tren ${journey.state.trainNumber} con asiento ${journey.state.seatNumber} desde ${journey.state.origin.name} hasta ${journey.state.destination.name}.`;
-          } else if (journey instanceof BoatJourney) {
-            journeyInfo = `Coge el barco ${journey.state.boatNumber} desde ${journey.state.origin.name} hasta ${journey.state.destination.name}.`;
-          }
-      
-          return <p key={index}>{journeyInfo}</p>;
-        });
+      return (`No existe una ruta de ${results[0].name} a ${results[1].name}`);
+    } else if (stages.length>0) {
+      const journeyList = stages.map((journey, index) => {
+        let journeyInfo = '';
+        if (journey instanceof AirplaneJourney) {
+          journeyInfo = `Coge el avión ${journey.state.flightNumber} con asiento ${journey.state.seatNumber} desde ${journey.state.origin.name} hasta ${journey.state.destination.name}.`;
+        } else if (journey instanceof CarJourney) {
+          journeyInfo = `Coge el coche desde ${journey.state.origin.name} hasta ${journey.state.destination.name} con la matrícula ${journey.state.licensePlate}.`;
+        } else if (journey instanceof TrainJourney) {
+          journeyInfo = `Coge el tren ${journey.state.trainNumber} con asiento ${journey.state.seatNumber} desde ${journey.state.origin.name} hasta ${journey.state.destination.name}.`;
+        } else if (journey instanceof BoatJourney) {
+          journeyInfo = `Coge el barco ${journey.state.boatNumber} desde ${journey.state.origin.name} hasta ${journey.state.destination.name}.`;
+        }
+  
+        return <li key={index}>{journeyInfo}</li>;
+      });
+  
+      journeyList.push(<li key="congrats">¡Felicidades, has llegado a tu destino!</li>);
+  
+      return journeyList;
     }
   };
+  
 
   return (
     <>
@@ -137,7 +142,10 @@ const App = () => {
         <button onClick={() => { searchRoute() }}>Search</button>
         <div className='result'>
           <h2>Result:</h2>
-          {renderStages()}
+          <ol>
+            {renderStages()}
+          </ol>
+          
         </div>
       </div>
       
