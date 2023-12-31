@@ -18,9 +18,8 @@ body {
   padding: 1em; 
 }
 
-#search-container input {
-  padding: 10px;
-  display: block;
+#search-container select {
+  padding: 15px;
   border-radius: 4px;
 }
 

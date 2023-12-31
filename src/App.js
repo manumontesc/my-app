@@ -126,8 +126,7 @@ const App = () => {
     <>
       <h1 className="app-title">Route Calculator</h1>
       <div id="search-container">
-        
-          <input
+          {/* <input
             type="text"
             placeholder="Origin"
             value={origin}
@@ -138,7 +137,38 @@ const App = () => {
             placeholder="Destination"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
-          />
+          /> */}
+
+        
+        <select
+          id="origin"
+          value={origin}
+          onChange={(e) => setOrigin(e.target.value)}
+        >
+          <option value="" disabled hidden>
+            Select Origin
+          </option>
+          {myGraph.nodes.map((node) => (
+            <option key={node.id} value={node.name}>
+              {node.name}
+            </option>
+          ))}
+        </select>
+      
+        <select
+          id="destination"
+          value={destination}
+          onChange={(e) => setDestination(e.target.value)}
+        >
+          <option value="" disabled hidden>
+            Select Destination
+          </option>
+          {myGraph.nodes.map((node) => (
+            <option key={node.id} value={node.name}>
+              {node.name}
+            </option>
+          ))}
+        </select>
         <button onClick={() => { searchRoute() }}>Search</button>
         <div className='result'>
           <h2>Result:</h2>
